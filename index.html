@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <h1>Memory Cards</h1>
+    <div class="game-board">
+      <div class="game-menu front">
+        <div class="game-start active">
+          <p class="instructions">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora
+            doloremque cumque accusamus aliquid! Veritatis deleniti labore, aut,
+            optio vero non rerum aspernatur, cum et doloribus impedit veniam
+            officia earum suscipit.
+          </p>
+          <button class="start">Start Game</button>
+        </div>
+        <div class="game-over disable">
+          <span class="result"> Game over</span>
+          <span class="result-score"></span>
+          <span class="result-time"></span>
+          <button class="try-again">Try again</button>
+        </div>
+      </div>
+      <div class="game back">
+        <div class="cards-container"></div>
+        <p>Moves: <span class="score">0</span></p>
+        <p>Time Left: <span class="time">0 seconds</span></p>
+        <button class="restart">Restart</button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
