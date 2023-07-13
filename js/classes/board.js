@@ -1,12 +1,12 @@
 import { Card } from "./card.js";
 
 export class Board {
-  constructor(
+  constructor({
     cards,
     cardContainer,
     grid = { width: 400, height: 400, cols: 4, rows: 4, gap: 10 },
-    numberOfMovesElement
-  ) {
+    numberOfMovesElement,
+  }) {
     this.cards = cards;
     this.generatedCards = [];
     this.cardContainer = cardContainer;
@@ -45,22 +45,18 @@ export class Board {
     this.cardContainer.style.height = `${height}px`;
     const cardWidth = width / cols - gap;
     const cardHeight = height / rows - gap;
-    let counter = 0;
-    for (let i = 0; i < rows; i++) {
-      for (let j = 0; j < cols; j++) {
-        const card = new Card(
-          counter,
-          this.cards[counter],
-          this.cardContainer,
-          {
-            cardWidth,
-            cardHeight,
-          }
-        );
-        this.generatedCards.push(card);
-        counter++;
-      }
+    const totalCells = cols * rows;
+    for (let i = 0; i < totalCells; i++) {
+      const card = new Card(i, this.cards[i], this.cardContainer, {
+        cardWidth,
+        cardHeight,
+      });
+      this.generatedCards.push(card);
     }
+    this.cardContainer.style.setProperty(
+      `grid-template-columns`,
+      `repeat(${cols},1fr)`
+    );
   }
 
   flipCard(card) {
@@ -107,7 +103,7 @@ export class Board {
     this.lockBoardActions = false;
   }
 
-  gameover() {
+  gameOver() {
     anime({
       targets: document.querySelector(".game-board"),
       rotateY: {
@@ -125,7 +121,7 @@ export class Board {
     let flipped = document.querySelectorAll(".flipped");
     let gameover = flipped.length === this.cardContainer.children.length;
     if (gameover) {
-      this.gameover();
+      this.gameOver();
     }
   }
 

@@ -73,11 +73,7 @@ p {
   line-height: 60px;
 }
 .cards-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  box-sizing: border-box;
+  display: grid;
 }
 .card {
   border-radius: 5px;
